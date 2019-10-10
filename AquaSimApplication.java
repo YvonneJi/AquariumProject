@@ -21,32 +21,45 @@ public class AquaSimApplication
      *  This is the main function.  It executes the program.
      *  @param    String args[] is never used
      **/
+     private static Random generator;
     public static void main(String args[])
     {
         System.out.println("Hello World.");
 
         // CONSTRUCT OBJECTS NEEDED FOR THE AQUARIUM SIMULATION.
-        Random generator = new Random();
+        generator = new Random();
         int randNum; 
             randNum = generator.nextInt(10);
             randNum = generator.nextInt(10);
         // Construct the aquarium.  Specify its dimensions when creating it.
         Aquarium aqua; 
         // create reference to an Aquarium ...
-        aqua = new Aquarium(200,300); // ... object that has now been created
+        aqua = new Aquarium(600,800); // ... object that has now been created
         
         // Construct fish and add them to the aquarium.
         //      CODE MISSING HERE!
-        AquaFish nemo = new AquaFish(aqua,Color.RED);
+        AquaFish nemo = new AquaFish(aqua,getColor());
         aqua.add(nemo);
         
         
-        AquaFish sushi = new AquaFish(aqua, Color.BLUE);
+        AquaFish sushi = new AquaFish(aqua, getColor());
         aqua.add(sushi);
         
         
-        AquaFish coco = new AquaFish(aqua,Color.BLUE);
+        AquaFish coco = new AquaFish(aqua,getColor());
         aqua.add(coco);
+        
+        AquaFish nini = new AquaFish(aqua,getColor());
+        aqua.add(nini);
+        
+        AquaFish cici = new AquaFish(aqua,getColor());
+        aqua.add(cici);
+        
+        
+        
+        
+        
+        
         
         
         // Construct a graphical user interface (GUI) to display and control
@@ -69,7 +82,8 @@ public class AquaSimApplication
 
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
-        
+        for(int i= 1; i>0; i++)
+        {
         
         nemo.moveForward();
         if (nemo.atWall())
@@ -88,7 +102,7 @@ public class AquaSimApplication
         
         userInterface.showAquarium();
         
-        
+       }
        
         
         
@@ -99,5 +113,22 @@ public class AquaSimApplication
         userInterface.println ("Close GUI display window to quit.");
 
     }//end main
+    public static Color getColor()
+   {
+   int randNum = generator.nextInt(6);
+   if (randNum==0)
+    return Color.RED;
+    else if (randNum==1)
+    return Color.BLUE;
+    else if (randNum==2)
+    return Color.GREEN;
+    else if (randNum==3)
+    return Color.ORANGE;
+    else if (randNum==4)
+    return Color.YELLOW;
+    else
+    return Color.MAGENTA;
 
+
+    }
 }//end class
