@@ -55,6 +55,9 @@ public class AquaSimApplication
         AquaFish cici = new AquaFish(aqua,getColor());
         aqua.add(cici);
         
+        AquaFish zizi = new AquaFish(aqua, getColor());
+        aqua.add(zizi);
+        
         
         
         
@@ -66,9 +69,10 @@ public class AquaSimApplication
         // the simulation.  The user interface needs to know about the
         // aquarium, so we pass aqua to the user interface constructor.
         AquaSimGUI userInterface;              // create reference to GUI ...
-        userInterface = new AquaSimGUI(aqua);  // ... and then GUI itself
+        userInterface = new AquaSimGUI(aqua,true);  // ... and then GUI itself
 
         // Tell the user how to start the aquarium simulation.
+        
         System.out.println("Press the Start button to start the simulation.");
 
         // Now wait for the user to press the start button.
@@ -82,7 +86,9 @@ public class AquaSimApplication
 
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
-        for(int i= 1; i>0; i++)
+        
+        
+        for(int steps=0;steps<= userInterface.getNumberOfSteps();steps++)
         {
         
         nemo.moveForward();
@@ -99,6 +105,22 @@ public class AquaSimApplication
         if (coco.atWall())
         coco.changeDir();
         coco.moveForward();
+        
+        nini.moveForward();
+        if (nini.atWall())
+        nini.changeDir();
+        nini.moveForward();
+        
+        cici.moveForward();
+        if (cici.atWall())
+        cici.changeDir();
+        cici.moveForward();
+        
+        zizi.moveForward();
+        if (zizi.atWall())
+        zizi.changeDir();
+        zizi.moveForward();
+        
         
         userInterface.showAquarium();
         
